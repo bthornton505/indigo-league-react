@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { SideNav } from './SideNav';
 
-export const ButtonAppBar = ({ ...props }) => {
+export const Navbar = ({ ...props }) => {
   return (
     <Box sx={{ flexGrow: 'flex' }}>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -23,12 +23,14 @@ export const ButtonAppBar = ({ ...props }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            INDIGO LEAGUE
+            <Button color="inherit" href="/">
+              INDIGO LEAGUE
+            </Button>
           </Typography>
           <Button color="inherit" href="/login">Login</Button>
         </Toolbar>
       </AppBar>
-      <SideNav/>
+      {/* <SideNav/> */}
     </Box>
   );
 }

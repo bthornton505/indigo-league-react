@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { ButtonAppBar } from '../organisms/Navbar';
+import { Navbar } from '../organisms/Navbar';
+import { LoginForm } from '../organisms/LoginForm';
 
 const Login: NextPage = () => {
   return (
@@ -12,13 +13,15 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ButtonAppBar/>
+      <Navbar/>
 
-      <main className={styles.main}>
+      {/* <main className={styles.main}> */}
         <h1 className={styles.title}>
           Login
         </h1>
-      </main>
+
+        <LoginForm/>
+      {/* </main> */}
 
       <footer className={styles.footer}>
         <a
