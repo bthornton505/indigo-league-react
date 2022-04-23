@@ -2,46 +2,47 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
+// import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
+
+const navOptions: string[] = [ 'Roster', 'Schedule', 'Tier List', 'Leaderboard', 'Hall of Fame']
 
 export const SideNav = ({ ...props }) => {
   const { state, toggleDrawer } = props;
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: 250, marginTop: '4rem' }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {navOptions.map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <ArrowRightIcon/>
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
-      <Divider />
+      {/* <Divider />
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <ArrowRightIcon/>
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 
