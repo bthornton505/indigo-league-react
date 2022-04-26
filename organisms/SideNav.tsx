@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-// import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { 
+  Box,
+  Drawer,
+  List,
+  ListItemIcon,
+  ListItemText,
+  ListItemButton,
+} from '@mui/material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -19,30 +20,17 @@ export const SideNav = ({ ...props }) => {
     <Box
       sx={{ width: 250, marginTop: '4rem' }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
         {navOptions.map((text, index) => (
-          <ListItem button key={text}>
+          <ListItemButton component="a" href={`/${text}`} key={text}>
             <ListItemIcon>
               <ArrowRightIcon/>
             </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+              <ListItemText primary={text} />
+          </ListItemButton>
         ))}
       </List>
-      {/* <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              <ArrowRightIcon/>
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
     </Box>
   );
 
