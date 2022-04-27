@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
@@ -10,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import { Box, Button, Grid, TextField } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
@@ -30,15 +30,13 @@ const createData = (
     price,
     history: [
       {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
+        hp: 90,
+        attack: 120,
+        defense: 100,
+        specialAttack: 150,
+        specialDefense: 120,
+        speed: 100
+      }
     ],
   };
 }
@@ -71,33 +69,43 @@ const Row = (props: { row: ReturnType<typeof createData> }) => {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              {/* <Typography variant="h6" gutterBottom component="div">
-                History
-              </Typography> */}
+              <h3>Abilities:</h3>
+              <p>Telepathy: This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.</p>
+              <p>Pressure: This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.</p>
+              <p>Pressure: This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.</p>
+            </Box>
+            <hr />
+            <Box sx={{ margin: 1 }}>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>Hp</TableCell>
+                    <TableCell>Attack</TableCell>
+                    <TableCell>Defense</TableCell>
+                    <TableCell>Special Attack</TableCell>
+                    <TableCell>Special Defense</TableCell>
+                    <TableCell>Speed</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                    <TableRow key={historyRow.hp}>
                       <TableCell component="th" scope="row">
-                        {historyRow.date}
+                        {historyRow.hp}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
+                      <TableCell>{historyRow.attack}</TableCell>
+                      <TableCell>{historyRow.defense}</TableCell>
+                      <TableCell>{historyRow.specialAttack}</TableCell>
+                      <TableCell>{historyRow.specialDefense}</TableCell>
+                      <TableCell>{historyRow.speed}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
+            </Box>
+            <Box sx={{ margin: 1.5 }}>
+              <Button className="mr-3" variant="contained">Serebii</Button>
+              <Button variant="contained">Pikalytics</Button>
             </Box>
           </Collapse>
         </TableCell>
@@ -114,7 +122,8 @@ const rows = [
   createData('Rillaboom', 'grass', '', 49, 3.9, 1.5),
 ];
 
-export const RosterTable = () => {
+export const RosterTable = ({ ...props }) => {
+  console.log(props)
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">

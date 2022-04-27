@@ -11,7 +11,7 @@ import {
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-const navOptions: string[] = [ 'Roster', 'Schedule', 'Tier List', 'Leaderboard', 'Hall of Fame']
+const navOptions: string[] = [ 'Roster', 'Schedule', 'Tiers', 'Leaderboard', 'Hof']
 
 export const SideNav = ({ ...props }) => {
   const { state, toggleDrawer } = props;
