@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import { Box, Button, Grid, TextField } from '@mui/material';
 
 export const LoginForm = ({ ...props }) => {
+  const { login } = props;
+
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
@@ -12,7 +12,7 @@ export const LoginForm = ({ ...props }) => {
     event.preventDefault();
     const payload: any = { email, password };
 
-    console.log('payload', payload)
+    login(payload);
   }
 
   return (
