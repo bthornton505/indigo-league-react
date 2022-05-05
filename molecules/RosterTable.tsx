@@ -1,17 +1,23 @@
 import React, { useEffect } from 'react';
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import { Box, Button } from '@mui/material';
+import {
+  Box,
+  Button,
+  Collapse,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
+export interface NewBox extends Box {
+  children?: JSX.Element|JSX.Element[];
+}
 
 export const RosterTable = ({ ...props }) => {
   const { pokemon } = props;
@@ -23,6 +29,7 @@ export const RosterTable = ({ ...props }) => {
     kills: number,
     deaths: number,
     price: number,
+    abilities: any[],
     stats: any[]
   ) => {
     return {
@@ -32,6 +39,7 @@ export const RosterTable = ({ ...props }) => {
       kills,
       deaths,
       price,
+      abilities,
       history: [
         {
           hp: stats[0].base_stat,
@@ -47,7 +55,6 @@ export const RosterTable = ({ ...props }) => {
 
   const Row = (props: { row: ReturnType<typeof createData> }) => {
     const { row } = props;
-    console.log('row', row)
     const [open, setOpen] = React.useState(false);
 
     return (
@@ -75,9 +82,9 @@ export const RosterTable = ({ ...props }) => {
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box sx={{ margin: 1 }}>
                 <h3>Abilities:</h3>
-                <p>Telepathy: This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.</p>
-                <p>Pressure: This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.</p>
-                <p>Pressure: This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.</p>
+                {row.abilities.map((ability: any) => {
+                  <p>{ability.name}</p>
+                })}
               </Box>
               <hr />
               <Box sx={{ margin: 1 }}>
@@ -126,7 +133,12 @@ export const RosterTable = ({ ...props }) => {
       const type1 = mon.types[0].type.name;
       const type2 = mon.types.length > 1 ? mon.types[1].type.name : '';
 
-      pokemonRows.push(createData(mon.name, type1, type2, 24, 4.0, 3.99, mon.stats));
+      const abilities: any[] = [];
+      mon.abilities.forEach((a: any) => {
+        abilities.push(a.ability.name);
+      })
+
+      pokemonRows.push(createData(mon.name, type1, type2, 24, 4.0, 3.99, abilities, mon.stats));
     });
 
     return pokemonRows;
