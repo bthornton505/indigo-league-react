@@ -9,6 +9,8 @@ const Schedule: NextPage = () => {
         Schedule & Standings
       </h1>
 
+      
+
     </Layout>
   )
 }

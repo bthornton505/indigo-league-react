@@ -8,13 +8,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 export const DenseTable = ({ ...props }) => {
-  function createData(
+  const createData = (
     name: string,
     calories: number,
     fat: number,
     carbs: number,
     protein: number,
-  ) {
+  ) => {
     return { name, calories, fat, carbs, protein };
   }
 
