@@ -22,6 +22,10 @@ export interface NewBox extends Box {
 export const RosterTable = ({ ...props }) => {
   const { pokemon } = props;
 
+  const handleRedirect = (name: string, url: string) => {
+    window.open(url + name, '_blank');
+  }
+
   const createData = (
     name: string,
     type_1: string,
@@ -116,8 +120,17 @@ export const RosterTable = ({ ...props }) => {
                 </Table>
               </Box>
               <Box sx={{ margin: 1.5 }}>
-                <Button className="mr-3" variant="contained">Serebii</Button>
-                <Button variant="contained">Pikalytics</Button>
+                <Button 
+                  onClick={() => handleRedirect(row.name, 'https://www.serebii.net/pokedex-swsh/')} 
+                  className="mr-3" 
+                  variant="contained">
+                  Serebii
+                </Button>
+                <Button 
+                  onClick={() => handleRedirect(row.name, `https://www.pikalytics.com/pokedex/ss/`)} 
+                  variant="contained">
+                  Pikalytics
+                </Button>
               </Box>
             </Collapse>
           </TableCell>

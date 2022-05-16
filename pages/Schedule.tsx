@@ -6,7 +6,7 @@ const Schedule: NextPage = () => {
   return (
     <Layout>
       <h1 className={styles.title}>
-        Schedule
+        Schedule & Standings
       </h1>
 
     </Layout>
