@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-export const DenseTable = ({ ...props }) => {
+export const StandingsTable = ({ ...props }) => {
   const createData = (
     name: string,
     calories: number,
@@ -31,11 +31,14 @@ export const DenseTable = ({ ...props }) => {
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Rank</TableCell>
+            <TableCell align="center">Team Name</TableCell>
+            <TableCell align="center">Manager</TableCell>
+            <TableCell align="center">Points</TableCell>
+            <TableCell align="center">Wins</TableCell>
+            <TableCell align="center">Losses</TableCell>
+            <TableCell align="center">K/D Diff</TableCell>
+            <TableCell align="center">Streak</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,10 +50,13 @@ export const DenseTable = ({ ...props }) => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="center">{row.calories}</TableCell>
+              <TableCell align="center">{row.fat}</TableCell>
+              <TableCell align="center">{row.carbs}</TableCell>
+              <TableCell align="center">{row.protein}</TableCell>
+              <TableCell align="center">{row.protein}</TableCell>
+              <TableCell align="center">{row.protein}</TableCell>
+              <TableCell align="center">{row.protein}</TableCell>
             </TableRow>
           ))}
         </TableBody>

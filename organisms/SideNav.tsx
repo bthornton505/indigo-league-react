@@ -11,7 +11,7 @@ import {
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-const navOptions: string[] = [ 'Roster', 'Schedule', 'Tiers', 'Leaderboard', 'Hof']
+const navOptions: string[] = [ 'roster', 'standings', 'tiers', 'leaderboard', 'hof']
 
 export const SideNav = ({ ...props }) => {
   const { state, toggleDrawer } = props;
@@ -27,7 +27,7 @@ export const SideNav = ({ ...props }) => {
             <ListItemIcon>
               <ArrowRightIcon/>
             </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text.toUpperCase()} />
           </ListItemButton>
         ))}
       </List>
